@@ -1,6 +1,6 @@
 ---
 - name: Make kickstarts
-  hosts: repo.lan.nathancurry.com
+  hosts: chmuhvp003
   gather_facts: false
   user: root
 
