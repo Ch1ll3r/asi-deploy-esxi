@@ -4,7 +4,7 @@
     login: admin
     password: Asi.2019
     media: cdrom
-    image: http://xxx
+    image: http://10.41.0.10/esxi.iso
     force: yes
     boot: boot_once
   when: cmdb_hwmodel.startswith('HP ')
