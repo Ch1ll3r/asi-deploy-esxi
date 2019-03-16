@@ -6,8 +6,8 @@
     password: Asi.2019
     media: cdrom
     image: http://10.41.0.10/esxi.iso
-when: cmdb_hwmodel.startswith('HP ')
- delegate_to: localhost
+#when: cmdb_hwmodel.startswith('HP ')
+# delegate_to: localhost
 
 
  - name: Power off a server
@@ -17,4 +17,4 @@ when: cmdb_hwmodel.startswith('HP ')
     password: Asi.2019
     force: yes
     state: boot_once
-  delegate_to: localhost
+ # delegate_to: localhost
