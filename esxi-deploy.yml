@@ -1,11 +1,20 @@
-- name: Task to boot a system using an ISO from an HP iLO interface only if the system is an HP server
+---
+- name: setiso
   hpilo_boot:
     host: 10.41.0.14
     login: admin
     password: Asi.2019
     media: cdrom
     image: http://10.41.0.10/esxi.iso
+when: cmdb_hwmodel.startswith('HP ')
+ delegate_to: localhost
+
+
+ - name: Power off a server
+  hpilo_boot:
+    host: 10.41.0.14
+    login: admin
+    password: Asi.2019
     force: yes
-    boot: boot_once
-#  when: cmdb_hwmodel.startswith('HP ')
-#  delegate_to: localhost
+    state: boot_once
+  delegate_to: localhost
