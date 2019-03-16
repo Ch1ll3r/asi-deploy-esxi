@@ -1,20 +1,28 @@
+# Created by thopper91(2017)
+#
+# Variables will need to be changed based on your environment
 ---
-- name: setiso
-  hpilo_boot:
-    host: 10.41.0.14
-    login: admin
-    password: Asi.2019
-    media: cdrom
-    image: http://10.41.0.10/esxi.iso
-#when: cmdb_hwmodel.startswith('HP ')
-# delegate_to: localhost
+- hosts: localhost
+  vars:
+    iLo_IP: '10.41.0.14'
+    iLo_username: 'admin'
+    iLo_password: 'Asi.2019'
+    iso_image: 'http://10.41.0.10/esxi.iso'
 
+  tasks:
+    - name: Boot the system with an ISO
+      hpilo_boot:
+        host: "{{ iLo_IP }}"
+        login: "{{ iLo_username }}"
+        password: "{{ iLo_password }}"
+        media: cdrom
+        image: "{{ iso_image }}"
+      delegate_to: localhost
 
-- name: Power off a server
-  hpilo_boot:
-    host: 10.41.0.14
-    login: admin
-    password: Asi.2019
-    force: yes
-    state: boot_once
- # delegate_to: localhost
+    - name: Power off the server
+      hpilo_boot:
+        host: "{{ iLo_IP }}"
+        login: "{{ iLo_username }}"
+        password: "{{ iLo_password }}"
+        state: poweroff
+      delegate_to: localhost
