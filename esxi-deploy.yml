@@ -10,7 +10,7 @@
 # delegate_to: localhost
 
 
- - name: Power off a server
+- name: Power off a server
   hpilo_boot:
     host: 10.41.0.14
     login: admin
