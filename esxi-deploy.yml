@@ -1,6 +1,11 @@
-- name: Hello World Sample
-  hosts: all
-  tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+- name: Task to boot a system using an ISO from an HP iLO interface only if the system is an HP server
+  hpilo_boot:
+    host: 10.41.0.14
+    login: admin
+    password: Asi.2019
+    media: cdrom
+    image: http://xxx
+    force: yes
+    boot: boot_once
+  when: cmdb_hwmodel.startswith('HP ')
+  delegate_to: localhost
